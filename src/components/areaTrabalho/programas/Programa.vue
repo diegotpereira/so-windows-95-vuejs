@@ -1,6 +1,6 @@
 <template>
     <div class="programa" @dblclick.stop="abrirPrograma">
-        <!-- <span class="icone" :style="{ backgroundImage: 'url(' + require('@/assets/icon/' + arquivoIcone + '.png') + ')', }"></span> -->
+        <span class="icone" :style="{ backgroundImage: 'url(' + require('@/assets/icon/' + arquivoIcone + '.png') + ')', }"></span>
         <span class="titulo"></span>
     </div>
 </template>
@@ -8,12 +8,14 @@
 export default {
     name: 'paginaPrograma',
     props: {
-        arquiivoNome: String,
-        arquivoIcone: String
+        arquivoNome: String,
+        arquivoIcone: String,
+        arquivoTipo: String,
+        arquivos: Array
     },
     methods: {
         abrirPrograma() {
-            this.$emit("abriPrograma", this.arquiivoNome, this.arquivoIcone)
+            this.$emit("abriPrograma", this.arquivoNome, this.arquivoIcone, this.arquivoTipo, this.arquivos)
         }
     }
 }
@@ -25,5 +27,19 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2px;
+    color: white;
+    user-select: none;
+}
+
+.icone {
+    width: 32px;
+    height: 32px;
+    margin-bottom: 8px;
+    background-size: 32px 32px;
+    position: relative;
+    display: block;
 }
 </style>

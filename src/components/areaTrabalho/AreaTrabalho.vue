@@ -4,8 +4,8 @@
             <Janela>
 
             </Janela>
-            <Programa>
-                
+            <Programa v-for="(programa, indice) in programas" v-bind:key="indice">
+
             </Programa>
         </div>
     </div>
@@ -19,6 +19,10 @@ export default {
     components: {
         Janela,
         Programa
+    },
+    props: {
+        programas: Object,
+        programasAberto: Object
     }
 }
 </script>
