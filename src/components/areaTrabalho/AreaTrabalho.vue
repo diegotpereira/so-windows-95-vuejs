@@ -11,7 +11,8 @@
                :arquivoNome="programa[0]"
                :arquivoIcone="programa[1]"
                :arquivoTipo="programa[2]"
-               :arquivos="[4]"
+               :arquivos="programa[4]"
+               :minimizar="programa[3]"
                :programasAberto="programasAberto"
                @abrirPrograma="abrirPrograma"
                @fecharPrograma="fecharPrograma"
@@ -25,16 +26,16 @@
                :arquivoNome="programa[0]"
                :arquivoIcone="programa[1]"
                :arquivoTipo="programa[2]"
-               :arquivos="[4]"
+               :arquivos="programa[4]"
                @abrirPrograma="abrirPrograma" 
                />
-            <AreaTrabalhoContextoMenu 
+        </div>
+        <AreaTrabalhoContextoMenu 
                v-if="this.desktopMenuContextoAtivo"
                :posicao="this.desktopMenuContextoPosicao"
                @modoTelaCheia="$emit('modoTelaCheia')"
                @Modocrt="$emit('Modocrt')" 
-               />
-        </div>
+        />
     </div>
 </template>
 <script>
@@ -77,12 +78,12 @@ export default {
         desktopContextoMenu(e) {
             e.preventDefault();
             e.stopPropagation();
-            this.$emit("redefinirDesktopContexto")
+            this.$emit("redefinirDesktopContexto");
             this.desktopMenuContextoPosicao[0] = 
                e.pageX - this.$refs.areatrabalho.getBoundingClientRect().left;
 
             this.desktopMenuContextoPosicao[1] = 
-               e.pageY -  this.$refs.areatrabalho.getBoundingClientRect().top;
+               e.pageY - this.$refs.areatrabalho.getBoundingClientRect().top;
 
             this.desktopMenuContextoAtivo = true;
         },

@@ -18,7 +18,7 @@
 
             <BarraTarefas 
                 :programas="programas"
-                :programasAberto="progrmasAberto"
+                :programasAberto="programasAberto"
                 :desktopIniciarMenuAtivo="desktopIniciarMenuAtivo"
                 @abrirPrograma="abrirPrograma"
                 @alternarBarraTarefas="alternarBarraTarefas"
@@ -88,6 +88,9 @@ export default {
                 if(this.programasAberto[i][0] == arquivoNome) 
                    this.programasAberto.splice(i, 1);
             }
+        },
+        redefinirDesktopContexto() {
+            this.desktopIniciarMenuAtivo = false;
         }
     }
 }

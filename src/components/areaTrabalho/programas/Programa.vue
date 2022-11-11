@@ -16,11 +16,12 @@ export default {
         arquivoNome: String,
         arquivoIcone: String,
         arquivoTipo: String,
-        arquivos: Array
+        arquivos: Array,
+        abrir: Boolean
     },
     methods: {
         abrirPrograma() {
-            this.$emit("abrirPrograma", this.arquivoNome, this.arquivoIcone, this.arquivoTipo, this.arquivos)
+            this.$emit("abrirPrograma", this.arquivoNome, this.arquivoIcone, this.arquivoTipo, this.arquivos);
         }
     }
 }
