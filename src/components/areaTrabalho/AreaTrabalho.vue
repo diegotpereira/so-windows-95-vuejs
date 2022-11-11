@@ -1,7 +1,9 @@
 <template>
     <div 
        class="areatrabalho"
-       ref="areatrabalho">
+       ref="areatrabalho"
+       v-on:click.left="redefinirDesktopContextoMenu"
+       v-on:click.right="desktopContextoMenu">
         <div class="programas">
             <Janela
                v-for="(programa, index) in programasAberto" 
@@ -12,6 +14,7 @@
                :arquivos="[4]"
                :programasAberto="programasAberto"
                @abrirPrograma="abrirPrograma">
+
                <component :is="programa[1]"></component>
             </Janela>
             <Programa 
@@ -21,19 +24,19 @@
                :arquivoIcone="programa[1]"
                :arquivoTipo="programa[2]"
                :arquivos="[4]"
-               @abrirPrograma="abrirPrograma">
-            </Programa>
+               @abrirPrograma="abrirPrograma" 
+               />
             <AreaTrabalhoContextoMenu 
                v-if="this.desktopMenuContextoAtivo"
                :posicao="this.desktopMenuContextoPosicao"
                @modoTelaCheia="$emit('modoTelaCheia')"
-               @Modocrt="$emit('Modocrt')">
-            </AreaTrabalhoContextoMenu>
+               @Modocrt="$emit('Modocrt')" 
+               />
         </div>
     </div>
 </template>
 <script>
-// import Janela from '../windows/Janela.vue'
+import Janela from '../windows/Janela.vue'
 import Programa from './programas/Programa.vue'
 import AreaTrabalhoContextoMenu from './AreaTrabalhoContextoMenu.vue'
 
@@ -42,11 +45,12 @@ export default {
     data() {
         return {
             desktopMenuContextoAtivo: false,
-            desktopMenuContextoPosicao: [0, 0]
+            desktopMenuContextoPosicao: [0, 0],
+            desktopVolumeMenuAtivo: false
         }
     },
     components: {
-        // Janela,
+        Janela,
         Programa,
         AreaTrabalhoContextoMenu
     },
@@ -68,6 +72,12 @@ export default {
                e.pageY -  this.$refs.areatrabalho.getBoundingClientRect().top;
 
             this.desktopMenuContextoAtivo = true;
+        },
+        redefinirDesktopContextoMenu() {
+            this.$emit("redefinirAreaTrabalhoContexto");
+            this.desktopMenuContextoAtivo = false;
+            this.desktopVolumeMenuAtivo = false;
+
         }
     }
 }

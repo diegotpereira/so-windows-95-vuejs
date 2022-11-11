@@ -2,12 +2,30 @@
     <div class="barratarefas">
         <div class="intro">
             <div class="involucro-menu-iniciar">
-                <div class="iniciar-menu">
+                <div class="iniciar-menu" v-if="this.desktopMenuContextoAtivo">
                     <div>
                         <span>Windows<span>95</span></span>
                     </div>
                     <div class="involucro-menu-programa-iniciar">
+                        <IniciarMenuPrograma 
+                            href="www.google.com"
+                            :arquivoNome="'GitHub'"
+                            :arquivoIcone="'GitHub'"
+                        />
                         <div class="divisor"></div>
+                        <IniciarMenuPrograma 
+                            v-for="(programa, index) in programas" 
+                            v-bind:key="index"
+                            :arquivoNome="programa[0]"
+                            :arquivoIcone="programa[1]"
+                            :arquivoTipo="programa[2]"
+                            :arquivos="programa[4]"
+                            @abrirPrograma="abrirPrograma"
+                        />
+                        <div class="divisor"></div>
+                        <IniciarMenuPrograma 
+                            :arquivoNome="'Desligar...'"
+                            :arquivoIcone="'Shutdown'"/>
                     </div>
                 </div>
                 <div class="iniciar" v-on:click="alternarBarraTarefas">
@@ -20,7 +38,14 @@
             </div>
             <div class="divisor"></div>
             <div class="barratarefas-programa-involucro">
-                
+                <BarraTarefasPrograma 
+                    v-for="(programa, index) in programasAberto" 
+                    v-bind:key="index"
+                    :arquivoNome="programa[0]"
+                    :arquivoIcone="programa[1]"
+                    @minimizarJanela="minimizarJanela"
+                    @abrirPrograma="abrirPrograma"
+                />
             </div>
             <div class="divisor"></div>
             <Relogio />
@@ -29,13 +54,13 @@
 </template>
 <script>
 import Relogio from './Relogio.vue'
+import IniciarMenuPrograma from './IniciarMenuPrograma.vue'
+import BarraTarefasPrograma from './BarraTarefasPrograma.vue'
 
 export default {
     name: 'paginaBarraTarefas',
     data() {
         return {
-            programas: Object,
-            programasAberto: Object
         }
     },
     methods: {
@@ -44,10 +69,21 @@ export default {
         },
         abrirPrograma(arquivoNome, arquivoIcone, arquivoTipo, arquivos) {
             this.$emit("abrirPrograma", arquivoNome, arquivoIcone, arquivoTipo, arquivos);
+        },
+        minimizarJanela(arquivoNome) {
+            this.$emit("minimizarJanela", arquivoNome);
+            
         }
     },
     components: {
-        Relogio
+        Relogio,
+        IniciarMenuPrograma,
+        BarraTarefasPrograma
+    },
+    props: {
+        desktopMenuContextoAtivo: Boolean,
+        programas: Object,
+        programasAberto: Object
     }
 }
 </script>

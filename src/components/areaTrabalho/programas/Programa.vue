@@ -1,6 +1,11 @@
 <template>
     <div class="programa" @dblclick.stop="abrirPrograma">
-        <!-- <span class="icone" :style="{ backgroundImage: 'url(' + require('@/assets/icon/' + arquivoIcone + '.png') + ')', }"></span> -->
+        <!-- <span 
+           class="icone" 
+           :style="{ 
+                backgroundImage: 
+                    'url(' + require('@/assets/icon/' + arquivoIcone + '.png') + ')', }">
+        </span> -->
         <span class="titulo">{{ arquivoNome }}</span>
     </div>
 </template>
@@ -40,7 +45,7 @@ export default {
         width: 32px;
         height: 32px;
         margin-bottom: 8px;
-        background-size: 32px 32;
+        background-size: 32px 32px;
         position: relative;
         display: block;
     }
