@@ -1,7 +1,7 @@
 <template>
     <div class="programa" @dblclick.stop="abrirPrograma">
-        <span class="icone" :style="{ backgroundImage: 'url(' + require('@/assets/icon/' + arquivoIcone + '.png') + ')', }"></span>
-        <span class="titulo"></span>
+        <!-- <span class="icone" :style="{ backgroundImage: 'url(' + require('@/assets/icon/' + arquivoIcone + '.png') + ')', }"></span> -->
+        <span class="titulo">{{ arquivoNome }}</span>
     </div>
 </template>
 <script>
@@ -15,7 +15,7 @@ export default {
     },
     methods: {
         abrirPrograma() {
-            this.$emit("abriPrograma", this.arquivoNome, this.arquivoIcone, this.arquivoTipo, this.arquivos)
+            this.$emit("abrirPrograma", this.arquivoNome, this.arquivoIcone, this.arquivoTipo, this.arquivos)
         }
     }
 }
@@ -32,14 +32,26 @@ export default {
     padding: 2px;
     color: white;
     user-select: none;
-}
-
-.icone {
-    width: 32px;
-    height: 32px;
-    margin-bottom: 8px;
-    background-size: 32px 32px;
-    position: relative;
-    display: block;
+    .titulo {
+        border: 1px solid transparent;
+        cursor: default;
+    }
+    .icone {
+        width: 32px;
+        height: 32px;
+        margin-bottom: 8px;
+        background-size: 32px 32;
+        position: relative;
+        display: block;
+    }
+    &.active {
+        span.titulo {
+            background-color: $highlightV95;
+            border: 1px dotted #939393;
+        }
+        .icone {
+            filter: opacity(0.5) drop-shadow(0 0 0 $highlightV95);
+        }
+    }
 }
 </style>

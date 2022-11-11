@@ -1,43 +1,52 @@
 <template>
-    <div class="container" :class="{Modocrt: Modocrt}">
+    <div class="container" :class="{modoTelaCheia: modoTelaCheia, Modocrt: Modocrt}">
         <div>
             <AreaTrabalho
                :programas="programas"
                :programasAberto="programasAberto"
                @abrirPrograma="abrirPrograma"
-               @Modocrt="alternarModoCrt" />
+               @Modocrt="alternarModoCrt" 
+               @modoTelaCheia="alternarModoTelaCheia" />
+
+            <BarraTarefas />
         </div>
     </div>
 </template>
 <script>
 import AreaTrabalho from './areaTrabalho/AreaTrabalho.vue'
 import Diretorio from '../data/Diretorio.vue'
+import BarraTarefas from './barratarefas/BarraTarefas.vue'
 
 export default {
     name: 'paginaPrincipal',
     data() {
         return {
+            modoTelaCheia: false,
             programasAberto: [],
             programas: Diretorio,
             Modocrt: true
         }
     },
     components: {
-        AreaTrabalho
+        AreaTrabalho,
+        BarraTarefas
     },
     methods: {
-        abrirPrograma(arquivoNome, arquivoIcone) {
+        abrirPrograma(arquivoNome, arquivoIcone, arquivoTipo, arquivos) {
 
             if (this.programasAberto.find(([titulo]) => titulo === arquivoNome)) {
                 
                 console.log("encontrado");
 
             } else {
-                this.programasAberto.push([arquivoNome, arquivoIcone])
+                this.programasAberto.push([arquivoNome, arquivoIcone, arquivoTipo, arquivos])
             }
         },
         alternarModoCrt() {
             this.Modocrt != this.Modocrt;
+        },
+        alternarModoTelaCheia() {
+            this.modoTelaCheia != this.modoTelaCheia;
         }
     }
 }
@@ -129,6 +138,13 @@ export default {
             z-index: 100;
             pointer-events: none;
             animation: flicker 0.15s infinite;
+        }
+    }
+    &.modoTelaCheia {
+        max-width: 100%;
+        height: 100%;
+        .areatrabalho {
+            height: 100% !important;
         }
     }
 }

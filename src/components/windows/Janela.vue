@@ -2,18 +2,18 @@
     <div class="janela">
         <div class="menu-bar">
             <div class="titulo">
-                <!-- <span class="icone" :style="{backgroundImage: 'url(' + require('@/assets/icon/' + arquivoIcone + '.png') + ')', }"></span> -->
-
+                <span class="icone" :style="{backgroundImage: 'url(' + require('@/assets/icon/' + arquivoIcone + '.png') + ')', }"></span>
+                <span>{{ arquivoNome }}</span>
             </div>
             <div class="acoes">
                 <div>
-                    <img src="" alt="">
+                    <img :src="('@/assets/icon/minimize.png')" alt="">
                 </div>
                 <div>
-                    <img src="" alt="">
+                    <img :src="('@/assets/icon/maximize.png')" alt="">
                 </div>
                 <div>
-                    <img src="" alt="">
+                    <img :src="('@/assets/icon/close.png')" alt="">
                 </div>
             </div>
         </div>
@@ -51,3 +51,10 @@ export default {
     }
 }
 </script>
+<style lang="scss" scoped>
+.janela {
+    height: 60%;
+    width: 60%;
+    position: absolute;
+}
+</style>
