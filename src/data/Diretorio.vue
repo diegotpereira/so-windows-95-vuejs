@@ -40,13 +40,13 @@ export default [
             [
                 ["Exemplo", "Internet", "Internet", true],
                 ["OctoPet", "Internet", "Internet", true],
-                ["Pasta ainda mais profunda", "Folder", "Folder", true,
+                ["Even Deeper Folder", "Folder", "Folder", true,
                    [["Lixeira", "RecycleBin", "Folder", true]]
-                ]
-            ]
+                ],
+            ],
         ],
         ["Internet Link", "Internet", "Internet", true]
-       ]
-    ]
-]
+       ],
+    ],
+];
 </script>

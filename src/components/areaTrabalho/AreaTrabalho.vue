@@ -13,7 +13,9 @@
                :arquivoTipo="programa[2]"
                :arquivos="[4]"
                :programasAberto="programasAberto"
-               @abrirPrograma="abrirPrograma">
+               @abrirPrograma="abrirPrograma"
+               @fecharPrograma="fecharPrograma"
+               @minimizarJanela="minimizarJanela">
 
                <component :is="programa[1]"></component>
             </Janela>
@@ -39,6 +41,8 @@
 import Janela from '../windows/Janela.vue'
 import Programa from './programas/Programa.vue'
 import AreaTrabalhoContextoMenu from './AreaTrabalhoContextoMenu.vue'
+import Internet from '../windows/Internet.vue'
+import Pasta from '../windows/Pasta.vue'
 
 export default {
     name: 'paginaAreaTrabalho',
@@ -52,7 +56,9 @@ export default {
     components: {
         Janela,
         Programa,
-        AreaTrabalhoContextoMenu
+        AreaTrabalhoContextoMenu,
+        Internet,
+        Pasta
     },
     props: {
         programas: Object,
@@ -62,9 +68,16 @@ export default {
         abrirPrograma(arquivoNome, arquivoIcone, arquivoTipo, arquivos) {
             this.$emit("abrirPrograma", arquivoNome, arquivoIcone, arquivoTipo, arquivos);
         },
+        fecharPrograma(arquivoNome) {
+            this.$emit("fecharPrograma", arquivoNome);
+        },
+        minimizarJanela(arquivoNome) {
+            this.$emit("minimizarJanela", arquivoNome)
+        },
         desktopContextoMenu(e) {
             e.preventDefault();
             e.stopPropagation();
+            this.$emit("redefinirDesktopContexto")
             this.desktopMenuContextoPosicao[0] = 
                e.pageX - this.$refs.areatrabalho.getBoundingClientRect().left;
 
@@ -74,7 +87,7 @@ export default {
             this.desktopMenuContextoAtivo = true;
         },
         redefinirDesktopContextoMenu() {
-            this.$emit("redefinirAreaTrabalhoContexto");
+            this.$emit("redefinirDesktopContexto");
             this.desktopMenuContextoAtivo = false;
             this.desktopVolumeMenuAtivo = false;
 

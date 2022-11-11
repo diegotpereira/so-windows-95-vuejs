@@ -1,8 +1,8 @@
 <template>
     <div class="barratarefas">
         <div class="intro">
-            <div class="involucro-menu-iniciar">
-                <div class="iniciar-menu" v-if="this.desktopMenuContextoAtivo">
+            <div class="involucro-menu-iniciar" ref="iniciarmenu">
+                <div class="iniciar-menu" v-if="this.desktopIniciarMenuAtivo">
                     <div>
                         <span>Windows<span>95</span></span>
                     </div>
@@ -14,7 +14,7 @@
                         />
                         <div class="divisor"></div>
                         <IniciarMenuPrograma 
-                            v-for="(programa, index) in programas" 
+                            v-for="(programa, index) in programas.slice(0, 6)" 
                             v-bind:key="index"
                             :arquivoNome="programa[0]"
                             :arquivoIcone="programa[1]"
@@ -25,13 +25,14 @@
                         <div class="divisor"></div>
                         <IniciarMenuPrograma 
                             :arquivoNome="'Desligar...'"
-                            :arquivoIcone="'Shutdown'"/>
+                            :arquivoIcone="'Shutdown'"
+                        />
                     </div>
                 </div>
                 <div class="iniciar" v-on:click="alternarBarraTarefas">
                     <div 
                        class="icone"
-                       :style="{ backgroundImage: 'url(' + require('@/assets/icon/start.png') + ')'}">
+                       :style="{ backgroundImage: 'url(' + require('@/assets/icon/start.png') + ')',}">
                     </div>
                     Iniciar
                 </div>
@@ -69,10 +70,14 @@ export default {
         },
         abrirPrograma(arquivoNome, arquivoIcone, arquivoTipo, arquivos) {
             this.$emit("abrirPrograma", arquivoNome, arquivoIcone, arquivoTipo, arquivos);
+            this.$emit("fecharBarraTarefas");
         },
         minimizarJanela(arquivoNome) {
             this.$emit("minimizarJanela", arquivoNome);
-            
+            this.$emit("fecharBarraTarefas");
+        },
+        fecharBarraTarefas() {
+            this.$emit("fecharBarraTarefas");
         }
     },
     components: {
@@ -81,7 +86,8 @@ export default {
         BarraTarefasPrograma
     },
     props: {
-        desktopMenuContextoAtivo: Boolean,
+        // desktopMenuContextoAtivo: Boolean,
+        desktopIniciarMenuAtivo: Boolean,
         programas: Object,
         programasAberto: Object
     }

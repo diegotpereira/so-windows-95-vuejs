@@ -36,6 +36,9 @@
     </div>
 </template>
 <script>
+import Internet from './Internet.vue'
+import Pasta from './Pasta.vue'
+
 export default {
     name: 'paginaJanela',
     data() {
@@ -53,6 +56,10 @@ export default {
         abrirPrograma(arquivoIcone) {
             this.$emit("abrirPrograma", arquivoIcone);
         }
+    },
+    computed: {
+        Internet,
+        Pasta
     }
 }
 </script>

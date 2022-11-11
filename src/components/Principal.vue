@@ -1,14 +1,30 @@
 <template>
-    <div class="container" :class="{modoTelaCheia: modoTelaCheia, Modocrt: Modocrt}">
+    <div 
+        class="container" 
+        :class="{ 
+            modoTelaCheia: modoTelaCheia, 
+            Modocrt: Modocrt }">
         <div>
             <AreaTrabalho
                :programas="programas"
                :programasAberto="programasAberto"
                @abrirPrograma="abrirPrograma"
+               @fecharPrograma="fecharPrograma"
                @Modocrt="alternarModoCrt" 
-               @modoTelaCheia="alternarModoTelaCheia" />
+               @modoTelaCheia="alternarModoTelaCheia"
+               @redefinirDesktopContexto="redefinirDesktopContexto"
+               @minimizarJanela="minimizarJanela" 
+            />
 
-            <BarraTarefas />
+            <BarraTarefas 
+                :programas="programas"
+                :programasAberto="progrmasAberto"
+                :desktopIniciarMenuAtivo="desktopIniciarMenuAtivo"
+                @abrirPrograma="abrirPrograma"
+                @alternarBarraTarefas="alternarBarraTarefas"
+                @fecharBarraTarefas="fecharBarraTarefas"
+                @minimizarJanela="minimizarJanela"
+            />
         </div>
     </div>
 </template>
@@ -24,7 +40,8 @@ export default {
             modoTelaCheia: false,
             programasAberto: [],
             programas: Diretorio,
-            Modocrt: true
+            Modocrt: true,
+            desktopIniciarMenuAtivo: false
         }
     },
     components: {
@@ -42,11 +59,35 @@ export default {
                 this.programasAberto.push([arquivoNome, arquivoIcone, arquivoTipo, arquivos])
             }
         },
+        alternarBarraTarefas() {
+            this.desktopIniciarMenuAtivo != this.desktopIniciarMenuAtivo;
+        },
+        redefinirDeskTopContexto() {
+            this.desktopIniciarMenuAtivo = false;
+        },
         alternarModoCrt() {
             this.Modocrt != this.Modocrt;
         },
         alternarModoTelaCheia() {
             this.modoTelaCheia != this.modoTelaCheia;
+        },
+        fecharBarraTarefas() {
+            this.desktopIniciarMenuAtivo = false
+        },
+        minimizarJanela(arquivoNome) {
+
+            for(let i = 0; i < this.programasAberto.length; i++) {
+                if(this.programasAberto[i][0] == arquivoNome) {
+                    this.programasAberto[i][3] = !this.programasAberto[i][3];
+                }
+            }
+        },
+        fecharPrograma(arquivoNome) {
+            console.log("Aqui");
+            for(let i = 0; i < this.programasAberto.length; i++) {
+                if(this.programasAberto[i][0] == arquivoNome) 
+                   this.programasAberto.splice(i, 1);
+            }
         }
     }
 }

@@ -1,9 +1,16 @@
 <template>
-    <div class="areatrabalhocontextomenu">
-        <div class="link"><span>Organizar ícones</span><span>></span></div>
+    <div 
+        class="areatrabalhocontextomenu"
+        v-bind:style="{
+            left: this.posicao[0] + 'px',
+            top: this.posicao[1] + 'px',
+        }">
+        <div class="link"><span>Organizar ícones</span> <span>›</span></div>
         <div class="link"><span>Ícones de alinhamento</span></div>
-        <div class="link"></div>
-        <div class="link"></div>
+        <div class="link" v-on:click="this.$emit('Modoctr')">Desabilitar&nbsp;CRT/Flicker</div>
+        <div class="link" v-on:click="this.$emit('modoTelaCheia')">Tela Cheia</div>
+        <div class="divisor"></div>
+        <div class="link"><span>Novo</span> <span>›</span></div>
         <div class="divisor"></div>
         <div class="link">Propriedades</div>
     </div>
