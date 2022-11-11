@@ -1,11 +1,11 @@
 <template>
     <div class="programa" @dblclick.stop="abrirPrograma">
-        <!-- <span 
+        <span 
            class="icone" 
            :style="{ 
                 backgroundImage: 
                     'url(' + require('@/assets/icon/' + arquivoIcone + '.png') + ')', }">
-        </span> -->
+        </span>
         <span class="titulo">{{ arquivoNome }}</span>
     </div>
 </template>
