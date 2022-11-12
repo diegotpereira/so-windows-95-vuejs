@@ -2,8 +2,9 @@
     <div class="barratarefas-relogio">
         <div 
            class="barratarefas-audio"
-           :style="{ backgroundImage: 'url(' + require('@/assets/icon/Volume.png') + ')',}">
-
+           :style="{ 
+            backgroundImage: 'url(' + require('@/assets/icon/Volume.png') + ')',}"
+            >
         </div>
         <div>{{ this.atualHora }}</div>
     </div>

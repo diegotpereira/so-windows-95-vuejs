@@ -22,12 +22,12 @@ export default [
         ]
     ],
     ["Internet", "Internet", "Internet", true],
-    ["Bloco de Notas", "Notepad", "Notepad", true],
+    ["Bloco de Notas", "Notepad", "BlocoNotas", true],
     ["Paint", "Paint", "Paint", true],
     ["Programas", "Programs", "Folder", true,
     [
         ["Internet", "Internet", "Internet", true],
-        ["Notepad", "Notepad", "Notepad", true],
+        ["Notepad", "Notepad", "BlocoNotas", true],
         ["AOL", "AOL", "AOL", true],
         ["Paint", "Paint", "Paint", true]
     ]

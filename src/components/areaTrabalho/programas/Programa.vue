@@ -4,7 +4,8 @@
            class="icone" 
            :style="{ 
                 backgroundImage: 
-                    'url(' + require('@/assets/icon/' + arquivoIcone + '.png') + ')', }">
+                    'url(' + require('@/assets/icon/' + arquivoIcone + '.png') + ')', }"
+                    >
         </span>
         <span class="titulo">{{ arquivoNome }}</span>
     </div>
@@ -50,11 +51,11 @@ export default {
         position: relative;
         display: block;
     }
-    &.active {
+    &:active {
         span.titulo {
             background-color: $highlightV95;
             border: 1px dotted #939393;
-        }
+            }
         .icone {
             filter: opacity(0.5) drop-shadow(0 0 0 $highlightV95);
         }

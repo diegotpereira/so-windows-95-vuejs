@@ -15,6 +15,7 @@
         <div class="detalhes-bar">
             <div>
                 {{ this.diretorioAtual ? this.diretorioAtual.length : "0"}}
+                objetos(s)
             </div>
         </div>
     </div>
@@ -62,6 +63,17 @@ export default {
     overflow: auto;
     display: flex;
     flex-direction: column;
+    .arquivos-bar {
+        @include v95Hover;
+        background-color: rgba(191, 193, 192, 1);
+        padding: 4px 2px 2px 2px;
+        margin-top: 2px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        user-select: none;
+    }
     .detalhes-bar {
         @include v95Hover;
         background-color: rgba(191, 193, 192, 1);

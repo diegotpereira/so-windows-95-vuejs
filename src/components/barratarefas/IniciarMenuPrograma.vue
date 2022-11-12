@@ -37,7 +37,7 @@ export default {
     height: 32px;
     padding: 0px 6px;
     &:hover,
-    &active {
+    &:active {
         background-color: $highlightV95;
         color: white;
     }

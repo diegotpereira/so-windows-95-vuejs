@@ -56,20 +56,20 @@ export default {
                 console.log("encontrado");
 
             } else {
-                this.programasAberto.push([arquivoNome, arquivoIcone, arquivoTipo, arquivos])
+                this.programasAberto.push([arquivoNome, arquivoIcone, arquivoTipo, true, arquivos])
             }
         },
         alternarBarraTarefas() {
-            this.desktopIniciarMenuAtivo != this.desktopIniciarMenuAtivo;
+            this.desktopIniciarMenuAtivo = !this.desktopIniciarMenuAtivo;
         },
         redefinirDeskTopContexto() {
             this.desktopIniciarMenuAtivo = false;
         },
         alternarModoCrt() {
-            this.Modocrt != this.Modocrt;
+            this.Modocrt = !this.Modocrt;
         },
         alternarModoTelaCheia() {
-            this.modoTelaCheia != this.modoTelaCheia;
+            this.modoTelaCheia = !this.modoTelaCheia;
         },
         fecharBarraTarefas() {
             this.desktopIniciarMenuAtivo = false

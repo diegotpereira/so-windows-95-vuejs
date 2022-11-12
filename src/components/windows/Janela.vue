@@ -36,22 +36,25 @@
             </div>
         </div>
         <div class="carregar-programa">
-            <component :is="carregarPrograma"
-                       :arquivoNome="arquivoNome"
-                       :arquivoIcone="arquivoIcone"
-                       :arquivoTipo="arquivoTipo"
-                       :programasAberto="programasAberto"
-                       @abrirPrograma="abrirPrograma"
-                       @fecharPrograma="fecharPrograma">
-
+            <component 
+                :is="carregarPrograma"
+                :arquivoNome="arquivoNome"
+                :arquivoIcone="arquivoIcone"
+                :arquivoTipo="arquivoTipo"
+                :programasAberto="programasAberto"
+                @abrirPrograma="abrirPrograma"
+                @fecharPrograma="fecharPrograma"
+                >
             </component>
-
         </div>
     </div>
 </template>
 <script>
 import Internet from './Internet.vue'
 import Pasta from './Pasta.vue'
+import Dialogo from './Dialogo.vue'
+import BlocoNotas from './/BlocoNotas.vue'
+
 
 export default {
     name: 'paginaJanela',
@@ -73,6 +76,15 @@ export default {
         programasAberto: Array,
         minimizar: Boolean
     },
+     components: {
+        Internet,
+        Pasta,
+        Dialogo,
+        BlocoNotas
+    },
+    mounted: function() {
+        this.zCiclo();
+    },
     methods: {
         abrirPrograma(arquivoNome, arquivoIcone, arquivoTipo, arquivos) {
             this.$emit("abrirPrograma", arquivoNome, arquivoIcone, arquivoTipo, arquivos);
@@ -92,7 +104,6 @@ export default {
             }
         },
         JanelaMouseBaixo(event) {
-
             let elemento = event.target;
             let maxIndice = document.querySelectorAll(".janela").length;
             this.zCiclo(parseInt(elemento.style.zIndice));
@@ -150,10 +161,6 @@ export default {
             event.preventDefault();
         }
     },
-    components: {
-        Internet,
-        Pasta,
-    }
 }
 </script>
 <style lang="scss" scoped>

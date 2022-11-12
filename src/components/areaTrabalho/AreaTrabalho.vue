@@ -16,8 +16,8 @@
                :programasAberto="programasAberto"
                @abrirPrograma="abrirPrograma"
                @fecharPrograma="fecharPrograma"
-               @minimizarJanela="minimizarJanela">
-
+               @minimizarJanela="minimizarJanela"
+               >
                <component :is="programa[1]"></component>
             </Janela>
             <Programa 
@@ -44,6 +44,7 @@ import Programa from './programas/Programa.vue'
 import AreaTrabalhoContextoMenu from './AreaTrabalhoContextoMenu.vue'
 import Internet from '../windows/Internet.vue'
 import Pasta from '../windows/Pasta.vue'
+import BlocoNotas from '../windows/BlocoNotas.vue'
 
 export default {
     name: 'paginaAreaTrabalho',
@@ -59,7 +60,8 @@ export default {
         Programa,
         AreaTrabalhoContextoMenu,
         Internet,
-        Pasta
+        Pasta,
+        BlocoNotas
     },
     props: {
         programas: Object,
@@ -81,10 +83,8 @@ export default {
             this.$emit("redefinirDesktopContexto");
             this.desktopMenuContextoPosicao[0] = 
                e.pageX - this.$refs.areatrabalho.getBoundingClientRect().left;
-
             this.desktopMenuContextoPosicao[1] = 
                e.pageY - this.$refs.areatrabalho.getBoundingClientRect().top;
-
             this.desktopMenuContextoAtivo = true;
         },
         redefinirDesktopContextoMenu() {

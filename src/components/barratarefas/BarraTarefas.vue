@@ -32,7 +32,9 @@
                 <div class="iniciar" v-on:click="alternarBarraTarefas">
                     <div 
                        class="icone"
-                       :style="{ backgroundImage: 'url(' + require('@/assets/icon/start.png') + ')',}">
+                       :style="{ 
+                        backgroundImage: 'url(' + require('@/assets/icon/start.png') + ')',}"
+                        >
                     </div>
                     Iniciar
                 </div>
@@ -64,6 +66,16 @@ export default {
         return {
         }
     },
+    props: {
+        desktopIniciarMenuAtivo: Boolean,
+        programas: Object,
+        programasAberto: Object
+    },
+    components: {
+        Relogio,
+        IniciarMenuPrograma,
+        BarraTarefasPrograma
+    },
     methods: {
         alternarBarraTarefas() {
             this.$emit("alternarBarraTarefas");
@@ -80,17 +92,6 @@ export default {
             this.$emit("fecharBarraTarefas");
         }
     },
-    components: {
-        Relogio,
-        IniciarMenuPrograma,
-        BarraTarefasPrograma
-    },
-    props: {
-        // desktopMenuContextoAtivo: Boolean,
-        desktopIniciarMenuAtivo: Boolean,
-        programas: Object,
-        programasAberto: Object
-    }
 }
 </script>
 
@@ -124,7 +125,8 @@ export default {
                 margin-right: 4px;
                 padding: 2px 4px;
                 font-weight: bold;
-                &.active {
+                height: 100%;
+                &:active {
                     border-style: solid;
                     border-width: 1px;
                     border-color: rgb(10, 10, 10) rgb(254, 254, 254) rgb(254, 254, 254)
@@ -141,10 +143,11 @@ export default {
                 }
             }
             .iniciar-menu {
-                @include v95;
+                @include v95();
                 display: flex;
                 flex-direction: row;
                 align-items: flex-start;
+                justify-content: flex-start;
                 position: absolute;
                 bottom: calc(100% + 3px);
                 left: -4px;
@@ -200,7 +203,7 @@ export default {
         border-color: rgb(254, 254, 254) rgb(223, 223, 223)
                         rgb(254, 254, 254) rgb(254, 254, 254);
     }
-    .involucro-menu-iniciar {
+    .barratarefas-programa-involucro {
         display: flex;
         flex-direction: row;
         align-items: flex-start;
@@ -210,7 +213,7 @@ export default {
     }
 }
 .relogio {
-    margin-left: 2px;
+    margin-right: 2px;
     padding: 2px 4px;
     background-color: rgba(191, 193, 192, 1);
     border-style: solid;
