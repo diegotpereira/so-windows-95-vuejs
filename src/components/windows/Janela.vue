@@ -55,7 +55,7 @@ import Pasta from './Pasta.vue'
 import Dialogo from './Dialogo.vue'
 import BlocoNotas from './/BlocoNotas.vue'
 import Paint from './Paint.vue'
-
+import AOL from './AOL.vue'
 
 export default {
     name: 'paginaJanela',
@@ -82,7 +82,8 @@ export default {
         Pasta,
         Dialogo,
         BlocoNotas,
-        Paint
+        Paint,
+        AOL
     },
     mounted: function() {
         this.zCiclo();
@@ -201,7 +202,7 @@ export default {
         height: 18px;
         display: flex;
         flex-direction: row;
-        align-content: center;
+        align-items: center;
         justify-content: space-between;
         background-color: $highlightV95;
         padding: 0px 3px;
@@ -240,7 +241,7 @@ export default {
                                 rgb(10, 10, 10) rgb(254, 254, 254);
 
                 box-shadow: rgb(223 223 223) 1px 1px 0px 0px inset;
-                &.active {
+                &:active {
                     border-style: solid;
                     border-width: 1px;
                     border-color: rgb(10, 10, 10) rgb(254, 254, 254) 

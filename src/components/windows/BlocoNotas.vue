@@ -71,7 +71,7 @@ export default {
       &:active {
         background-color: $highlightV95;
         color: white;
-        &:active {
+        &:after {
           content: "";
           position: absolute;
           bottom: 4px;
