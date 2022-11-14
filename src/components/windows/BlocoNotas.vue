@@ -8,7 +8,12 @@
           <div class="link" v-on:click="fecharPrograma">Sair</div>
         </div>
       </div>
-      <a href="" class="link" target="_blank"> Sobre </a>
+      <a 
+        href="https://github.com/diegotpereira/so-windows-95-vuejs" 
+        class="link" 
+        target="_blank"> 
+        Sobre 
+      </a>
       <div class="link">Ajuda</div>
     </div>
     <textarea autofocus></textarea>
@@ -33,23 +38,20 @@ export default {
   width: 100%;
   overflow: auto;
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-  user-select: none;
-  z-index: 1;
+  flex-direction: column;
   .arquivo-bar {
     background-color: rgba(191, 193, 192, 1);
     padding: 2px 0px 0px 0px;
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: flex-start;
     user-select: none;
     z-index: 1;
     .link {
       cursor: default;
       text-decoration: none;
-      padding: 0px 4px 0px 0px;
+      padding: 0px 4px 0px 4px;
       display: flex;
       align-items: center;
       justify-content: flex-start;
@@ -66,7 +68,7 @@ export default {
         background: #000000;
       }
       &:hover,
-      &.active {
+      &:active {
         background-color: $highlightV95;
         color: white;
         &:active {

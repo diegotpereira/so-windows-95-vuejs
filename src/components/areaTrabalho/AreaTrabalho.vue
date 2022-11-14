@@ -55,6 +55,10 @@ export default {
             desktopVolumeMenuAtivo: false
         }
     },
+    props: {
+        programas: Object,
+        programasAberto: Object
+    },
     components: {
         Janela,
         Programa,
@@ -62,10 +66,6 @@ export default {
         Internet,
         Pasta,
         BlocoNotas
-    },
-    props: {
-        programas: Object,
-        programasAberto: Object
     },
     methods: {
         abrirPrograma(arquivoNome, arquivoIcone, arquivoTipo, arquivos) {

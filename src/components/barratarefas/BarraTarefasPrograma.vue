@@ -44,11 +44,11 @@ export default {
     box-shadow: rgb(223 223 223) 1px 1px 0px 0px inset,
        rgb(132 133 132) 0px 0px 0px 1px inset;
     background: rgb(198, 198, 198);
-    &.active {
+    &:active {
         border-style: solid;
         border-width: 1px;
         border-color: rgb(10, 10, 10) rgb(254, 254, 254) 
-        rgb(254, 254, 254)rgb(10, 10, 10);
+        rgb(254, 254, 254) rgb(10, 10, 10);
       box-shadow: rgb(233, 233, 233) 1px 1px 0px 0px inset;
     }
     .icone {

@@ -54,6 +54,7 @@ import Internet from './Internet.vue'
 import Pasta from './Pasta.vue'
 import Dialogo from './Dialogo.vue'
 import BlocoNotas from './/BlocoNotas.vue'
+import Paint from './Paint.vue'
 
 
 export default {
@@ -80,7 +81,8 @@ export default {
         Internet,
         Pasta,
         Dialogo,
-        BlocoNotas
+        BlocoNotas,
+        Paint
     },
     mounted: function() {
         this.zCiclo();
