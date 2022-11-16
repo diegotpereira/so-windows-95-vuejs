@@ -79,6 +79,83 @@ export default {
             padding: 2px 0px;
             display: flex;
             flex-direction: row;
+            align-items: center;
+            color: white;
+            .icone {
+                width: 14px;
+                height: 14px;
+                margin-right: 4px;
+                background-size: 14px 14px;
+                position: relative;
+                margin-bottom: 2px;
+                display: block;
+            }
+        }
+        .acoes {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-end;
+            div {
+                width: 16px;
+                height: 14px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: rgba(191, 193, 192, 1);
+                border-style: solid;
+                border-color: rgb(254, 254, 254) rgb(10, 10, 10)
+                                rgb(10, 10, 10) rgb(254, 254, 254);
+                box-shadow: rgb(223 , 223, 223) 1px 1px 0px 0px inset;
+                img {
+                    -webkit-filter: invert(40%);
+                    filter: invert(40%);
+                }
+            }
+        }
+    }
+    .dialogo-janela {
+        width: 300px;
+        height: 105px;
+        padding: 2px;
+        position: relative;
+        z-index: 21;
+        background-color: rgba(191, 193, 192, 1);
+        border-style: solid;
+        border-color: rgb(254, 254, 254) rgb(10, 10, 10)
+                        rgb(10, 10, 10) rgb(254, 254, 254);
+        box-shadow: rgb(223, 223, 223) 1px 1px 0px 0px inset,
+                      rgb(132, 133, 132) 0px 0px 0px 1px inset;
+        .dialogo-corpo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            .conteudo {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: flex-start;
+                width: 100%;
+                text-align: center;
+                height: 40px;
+                div {
+                    margin-left: 16px;
+                }
+            }
+            .botao {
+                @include v95;
+                width: 90px;
+                text-align: center;
+                 padding: 4px;
+                margin: 4px;
+                pointer-events: auto;
+                &:active,
+                &:focus {
+                @include v95Hover;
+                }
+            }
         }
     }
 }

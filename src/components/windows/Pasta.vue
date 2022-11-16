@@ -67,7 +67,6 @@ export default {
         @include v95Hover;
         background-color: rgba(191, 193, 192, 1);
         padding: 4px 2px 2px 2px;
-        margin-top: 2px;
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -97,6 +96,12 @@ export default {
         overflow: auto;
         @include v95Hover;
         background-color: white;
+        .programa {
+            color: inherit;
+            &:active {
+                color: white;
+            }
+        }
     }
 }
 </style>

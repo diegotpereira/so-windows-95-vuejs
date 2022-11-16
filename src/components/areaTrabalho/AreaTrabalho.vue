@@ -75,7 +75,7 @@ export default {
             this.$emit("fecharPrograma", arquivoNome);
         },
         minimizarJanela(arquivoNome) {
-            this.$emit("minimizarJanela", arquivoNome)
+            this.$emit("minimizarJanela", arquivoNome);
         },
         desktopContextoMenu(e) {
             e.preventDefault();
