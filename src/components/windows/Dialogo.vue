@@ -122,6 +122,7 @@ export default {
         z-index: 21;
         background-color: rgba(191, 193, 192, 1);
         border-style: solid;
+        border-width: 1px;
         border-color: rgb(254, 254, 254) rgb(10, 10, 10)
                         rgb(10, 10, 10) rgb(254, 254, 254);
         box-shadow: rgb(223, 223, 223) 1px 1px 0px 0px inset,
@@ -138,6 +139,8 @@ export default {
                 align-items: center;
                 justify-content: flex-start;
                 width: 100%;
+                padding: 16px 16px 8px 16px;
+                margin-bottom: 4px;
                 text-align: center;
                 height: 40px;
                 div {
